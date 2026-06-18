@@ -118,9 +118,39 @@ nav {
   padding: 16px 40px;
 }
 
-
 .nav-links {
   display: flex;
   gap: 20px;
 }
 
+.menu-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.menu-list li {
+  margin-bottom: 30px;
+}
+
+.menu-card {
+  background-color: #9b5de5;
+  color: white;
+  padding: 24px;
+  border-radius: 18px;
+  margin-bottom: 28px;
+}
+
+.menu-card h2 {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.menu-card p {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.price {
+  color: #fff4c2;
+  font-weight: bold;
+  font-size: 20px;
+}
