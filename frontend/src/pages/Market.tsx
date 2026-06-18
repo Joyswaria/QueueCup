@@ -1,19 +1,24 @@
 import Navbar from "../components/Navbar"
 import { menuItems } from "../data/menuItems"
 import MenuCard from "../components/MenuCard"
+import type { Produit } from "../types/MenuItems"
 
-function Market() {
+export type MarketProps = {
+    addToCart : (prod : Produit) => void
+}
+
+function Market({ addToCart } : MarketProps) {
   return (
     <>
       <Navbar />
 
       <main>
-        <h1>Live Café Market</h1>
-        <p>Menu items will be displayed here.</p>
+        <h1>Café Market</h1>
+        <p>Menu items are displayed here.</p>
 
         <ul className="menu-list">
             {menuItems.map((item) => (
-                <MenuCard key={item.id} item={item} />
+                <MenuCard key={item.id} item={item} addToCart={addToCart} />
             ))}
         </ul>
 
