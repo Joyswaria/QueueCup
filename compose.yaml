@@ -1,0 +1,19 @@
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: queuecup
+      POSTGRES_PASSWORD: queuecup
+      POSTGRES_DB: queuecup
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - queuecup-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "queuecup", "-d", "queuecup"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  queuecup-data:
