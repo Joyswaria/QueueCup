@@ -1,30 +1,39 @@
 import Navbar from "../components/Navbar"
-import { menuItems } from "../data/menuItems"
 import MenuCard from "../components/MenuCard"
-import type { Produit } from "../types/MenuItems"
+import type { MarketItem } from "../marketApi"
 
-export type MarketProps = {
-    addToCart : (prod : Produit) => void
+type MarketProps = {
+    items: MarketItem[]
+    status: 'connecting' | 'live' | 'reconnecting'
+    cart: Record<number, number>
+    locked: boolean
+    addToCart: (itemId: number) => void
 }
 
-function Market({ addToCart } : MarketProps) {
-  return (
-    <>
-      <Navbar />
-
-      <main>
-        <h1>Café Market</h1>
-        <p>Menu items are displayed here.</p>
-
-        <ul className="menu-list">
-            {menuItems.map((item) => (
-                <MenuCard key={item.id} item={item} addToCart={addToCart} />
-            ))}
-        </ul>
-
-      </main>
-    </>
-  )
+function Market({ items, status, cart, locked, addToCart }: MarketProps) {
+    return (
+        <>
+            <Navbar />
+            <main>
+                <h1>Café Market</h1>
+                {status !== 'live' && (
+                    <p role="status">
+                        {status === 'connecting' ? 'Connecting to the market…' : 'Reconnecting to the market…'}
+                    </p>
+                )}
+                <ul className="menu-list">
+                    {items.map(item => (
+                        <MenuCard
+                            key={item.id}
+                            item={item}
+                            addToCart={addToCart}
+                            canAdd={!locked && (cart[item.id] ?? 0) < 99}
+                        />
+                    ))}
+                </ul>
+            </main>
+        </>
+    )
 }
 
 export default Market

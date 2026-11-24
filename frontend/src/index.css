@@ -190,3 +190,49 @@ nav {
 .addtocart-button:hover {
   transform: scale(1.03);
 }
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.cart-page {
+  padding: 0 20px 40px;
+}
+
+.cart-list {
+  list-style: none;
+  padding: 0;
+  max-width: 520px;
+  margin: 24px auto;
+}
+
+.cart-list > li,
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cart-list > li {
+  justify-content: space-between;
+  padding: 12px 0;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.quantity-controls button,
+.checkout-button {
+  font: inherit;
+  padding: 4px 12px;
+  cursor: pointer;
+}
+
+.checkout-button,
+.receipt {
+  margin-top: 24px;
+}
+
+.receipt-id {
+  overflow-wrap: anywhere;
+}

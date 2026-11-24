@@ -6,7 +6,7 @@ function Home() {
             <Navbar />
             <main>
                 <h1>QueueCup</h1>
-                <p>A dynamic café reservation and pricing sytem.</p>
+                <p>A café market simulation with live prices shaped by purchases.</p>
             </main>
         </>
     )
